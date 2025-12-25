@@ -1,16 +1,19 @@
 from Crypto.Util.number import *
-# from sympy.ntheory import factorint
+from sympy import factorint
 
-n = 72007178587906877602159952122892502935820567614055131375782990992310569011821
-e = 65537
-c = 860400823387773965670347422104627073378256111830564594779821261367252085689
+n = int(input("n = "))
+e = int(input("e = "))
+c = int(input("c = "))
 
-p = 251627213347070412373459477536625142413
-q = 286166101154516585879591498614939211617
+factors = factorint(n)
+
+if len(factors) != 2:
+    raise ValueError("Ce n\'est pas un produit de deux nombres premiers")
+
+p, q = factors.keys()
 
 phi = (p - 1) * (q - 1)
 d = inverse(e, phi)
 m = pow(c, d, n)
 
-#print(factorint(n))
-print(m)
+print(f"Message déchiffré ={m}")
