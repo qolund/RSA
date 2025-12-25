@@ -17,3 +17,4 @@ d = inverse(e, phi)
 m = pow(c, d, n)
 
 print(f"Message déchiffré ={m}")
+print(long_to_bytes(m))
